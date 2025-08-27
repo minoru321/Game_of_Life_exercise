@@ -33,11 +33,11 @@
     }
 
     // Count the Live Neighbours
-    function countLiveNeighbours($x,$y,$size,$grid){
+    function countLiveNeighbours($x, $y, $size, $grid){
         $count = 0;  #for start all 0 live Neighbours(as all dead)
         for ($i = -1;$i <= 1 ;$i++) {
             for ($j = -1; $j <= 1 ; $j++){
-                if($i == 0 && $j == 0 ) continue; # we are caring about Neighbours (So skip center cell > [2][2]) 
+                if($i === 0 && $j === 0 ) continue; # we are caring about Neighbours (So skip center cell > [2][2]) 
                 $newX =$x + $i ;
                 $newY =$y + $j ;
                     if($newX >= 0 && $newY >= 0 && $newX < $size && $newY < $size){ # To check cell is within the univers
@@ -53,28 +53,28 @@
         $newGrid = array_fill(0,$size,array_fill(0,$size,0)); # Filling new grid $size * $size full metrix with 0 (All dead cells)
         for($x = 0; $x < $size ; $x++){
             for($y = 0; $y < $size ; $y++){
-                $neighbours = countLiveNeighbours($x,$y,$size,$grid);
+                $neighbours = countLiveNeighbours($x, $y, $size, $grid);
                 // Rule 1 : Underpopulation 
                 if($grid[$x][$y] === 1 &&  $neighbours < 2) { 
                     $newGrid[$x][$y] = 0 ;
                 } 
                 // Rule 2 : Survival
-                elseif ($grid[$x][$y] = 1 &&($neighbours === 2 && $neighbours === 3) ) {   
+                elseif ($grid[$x][$y] === 1 &&($neighbours === 2 || $neighbours === 3) ) {   
                     $newGrid[$x][$y] = 1 ;
                 }
                 // Rule 3 : Overcrowding
-                elseif ($grid[$x][$y] = 1 && ($neighbours > 3)) {
+                elseif ($grid[$x][$y] === 1 && ($neighbours > 3)) {
                     $newGrid[$x][$y] = 0 ;
                 }
                 // Rule 4 : Reproduction
-                elseif ($grid[$x][$y] = 0 && ($neighbours === 3)) {
+                elseif ($grid[$x][$y] === 0 && ($neighbours === 3)) {
                     $newGrid[$x][$y] = 1 ;
                 }else {
                     $newGrid[$x][$y] = 0 ;
                 }
             }
-        return $newGrid;
-    }
+        }
+    return $newGrid;
 }
 
 
@@ -87,7 +87,7 @@ for($tick = 1; $tick < 10; $tick++){
     echo "Genaration $tick\n";
     printGrid($grid);
     $grid = applyRules($grid,$size);
-    usleep(900000);
+    usleep(500000); // for deley 0.5 sec
     echo "\n";
 }
 
