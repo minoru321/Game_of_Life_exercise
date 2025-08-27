@@ -24,11 +24,12 @@
                     echo "*"; // dead cell
                 }
             }
+            echo PHP_EOL;
         }
     }
 
 
 #initializeGrid($grid);
-#printGrid($grid);
+printGrid($grid);
 
 ?>
