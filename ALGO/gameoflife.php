@@ -1,10 +1,6 @@
 <?php
     // Implementation of Conway's Game of life Using PHP (Console Running)
 
-    $size = 25; # To Diffine the size of the grid( 25x25 cell universe )
-    $grid = array_fill(0, $size, array_fill(0, $size, 0) ); # Filling $size * $size full matrix with 0 (All dead cells)
-    
-
     // Starting Glider pattern Display (Shoud be middle of the 25 * 25 metrix )
     function initializeGrid(&$grid){
         $centralX = 12;
@@ -75,20 +71,6 @@
             }
         }
     return $newGrid;
-}
-
-
-
- initializeGrid($grid);
-
-
-// Run the functions
-for($tick = 1; $tick < 10; $tick++){
-    echo "Genaration $tick\n";
-    printGrid($grid);
-    $grid = applyRules($grid,$size);
-    usleep(500000); // for deley 0.5 sec
-    echo "\n";
 }
 
 ?>
