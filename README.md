@@ -77,3 +77,7 @@ Open CMD > php test.php
         * * * * * * * * * * * * * * * * * * * * * * * * *
         * * * * * * * * * * * * * * * * * * * * * * * * *
         * * * * * * * * * * * * * * * * * * * * * * * * *
+
+# No external libraries (Composer/PHPUnit) were used – the solution is kept lightweight and self-contained.
+
+# Clear commits were made to show progress through different stages of development.
