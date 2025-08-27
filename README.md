@@ -22,25 +22,25 @@ Open CMD > php test.php
 2. TEST 2 : To Check Overpopulation used below sample grid with 4 Neighbours
 
         [0 , 1, 0],
-        [1 , 1, 1],     so, next genaration should be die (*)
+        [1 , 1, 1],     so, next genaration center should be die (*)
         [0 , 1, 0]
 
 3. TEST 3 : To Check Underpopulation used sample grid with 1 Neighbours
 
         [0 , 0, 0],
-        [0 , 1, 0],    so, next genaration should be die (*)
+        [0 , 1, 0],    so, next genaration center should be die (*)
         [0 , 1, 0]
 
 4. TEST 4 : To Check Survival used below sample grid with 2 Neighbours
 
         [0 , 0, 0],
-        [1 , 1, 0],    so, next genaration should be die (*)
+        [1 , 1, 0],    so, next genaration center should be Live (@)
         [0 , 1, 0]
 
 5. TEST 5 : To Check Reproduction used below sample grid with 3 Neighbours
 
         [0 , 0, 0],
-        [1 , 0, 1],   so, next genaration should be Live (*) - USed dead cell
+        [1 , 0, 1],   so, next genaration center should be Live (@) - USed dead cell
         [0 , 1, 0]
 
 6. TEST 6 : To check Edge cell behavor in next genaration user below sample grid
