@@ -51,19 +51,8 @@
     echo "------------------------------------------------------------";
     echo PHP_EOL;usleep(500000);
 
-//Test 5
-    echo "Test 5: Check Survival - With 2 Neigbours > center should Live(@) \n\n";
-    $surviveGrid = [
-        [0 , 0, 0],
-        [1 , 1, 0],
-        [0 , 1, 0]
-    ];
-    $surviveNext = applyRules($surviveGrid,3);
-    printGrid($surviveNext);
-    echo "------------------------------------------------------------";
-    echo PHP_EOL;usleep(500000);
 
-// Test 6
+// Test 5
     echo "Test 5: Check Reproduction - With 3 Neigbours > center should Live(@) (Center was Dead cel) \n\n";
     $reproductGrid = [
         [0 , 0, 0],
@@ -75,6 +64,17 @@
     echo "------------------------------------------------------------";
     echo PHP_EOL;usleep(500000);
 
+// Test 6
+    echo "Test 5: Checking Edge cell behavor\n\n";
+    $edgeGrid = [
+        [1 , 1, 0],
+        [0 , 0, 0],
+        [0 , 0, 0]
+    ];
+    $edgeNext = applyRules($edgeGrid,3);
+    printGrid($edgeNext);
+    echo "------------------------------------------------------------";
+    echo PHP_EOL;usleep(500000);
 
 // Test 7
     $grid = array_fill(0, 25, array_fill(0, 25, 0) );

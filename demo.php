@@ -4,6 +4,10 @@
 
 require_once "ALGO/gameoflife.php";
 
+    /* $input = readline("Enter grid size (e.g., 25): ");
+    $size = (int)$input;  # LEtting user to input the univers size */
+
+
     $size = 25; # To Diffine the size of the grid( 25x25 cell universe )
     $generation = 10; # To diffine a generation count
     $grid = array_fill(0, $size, array_fill(0, $size, 0) ); # Filling $size * $size full matrix with 0 (All dead cells)
