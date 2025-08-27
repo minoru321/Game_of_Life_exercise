@@ -28,8 +28,21 @@
         }
     }
 
+    // Count the Live Neighbours
+    function countLiveNeighbours($x,$y){
+        $count = 0;  #for start all 0 live Neighbours(All dead)
+        for ($i = -1;$i <= 1 ;$i++) {
+            for ($j = -1; $j <= 1 ; $j++){
+                if($i == 0 && $j == 0 ) continue; # we are caring about Neighbours (So skip center cell > [2][2]) 
+                $newX =$x + $i ;
+                $newY =$y + $j ;
+            }           
+        }
+        return $count;
+    }
+
 
 #initializeGrid($grid);
 printGrid($grid);
-
+countLiveNeighbours(2,3);
 ?>
