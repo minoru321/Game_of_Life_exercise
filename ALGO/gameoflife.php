@@ -6,14 +6,14 @@
     
 
     // Starting Glider pattern Display (Shoud be middle of the 25 * 25 metrix )
-    function initializeGrid($grid){
+    function initializeGrid(&$grid){
         $centralX = 12;
         $centralY = 12;
     
         $grid[$centralX - 1][$centralY] = 1;
         $grid[$centralX][$centralY + 1] = 1;
         $grid[$centralX + 1][$centralY - 1] = 1;
-        $grid[$centralX + 1] [$centralY - 1] = 1;
+        $grid[$centralX + 1] [$centralY] = 1;
         $grid[$centralX + 1][$centralY + 1] = 1;
     
     
@@ -30,7 +30,7 @@
         foreach ($grid as $row){
             foreach($row as $cell){
                 if($cell) {
-                    echo " 0"; //live cell
+                    echo " @"; //live cell
                 }else{
                     echo " *"; // dead cell
                 }
@@ -61,27 +61,32 @@
         for($x = 0; $x < $size ; $x++){
             for($y = 0; $y < $size ; $y++){
                 $neighbours = countLiveNeighbours($x,$y,$size,$grid);
-                if($grid[$x][$y] === 1 ) { 
-                    if($neighbours === 2 || $neighbours === 3){
-                        $grid[$x][$y] === 1;
-                    }else{
-                        $grid[$x][$y] === 0;  
-                    }
+                // Rule 1 : Underpopulation 
+                if($grid[$x][$y] === 1 &&  $neighbours < 2) { 
+                    $newGrid[$x][$y] = 0 ;
+                } 
+                // Rule 2 : Survival
+                elseif ($grid[$x][$y] = 1 && $neighbours === 2 && $neighbours === 3 ) {   
+                    $newGrid[$x][$y] = 1 ;
+                }
+                // Rule 3 : Overcrowding
+                elseif ($grid[$x][$y] = 1 && $neighbours > 3) {
+                    $newGrid[$x][$y] = 0 ;
+                }
+                // Rule 4 : Reproduction
+                elseif ($grid[$x][$y] = 0 && $neighbours === 3) {
+                    $newGrid[$x][$y] = 1 ;
                 }else {
-                    if($neighbours === 3){    #  Rule 4: Reproduction
-                        $grid[$x][$y] === 1;
-                }else {
-                     $grid[$x][$y] === 0;   
+                    $newGrid[$x][$y] = 0 ;
                 }
             }
-        }
         return $newGrid;
     }
 }
 
 
 
-# initializeGrid($grid);
+ initializeGrid($grid);
 
 
 // Run the functions
