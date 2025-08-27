@@ -16,13 +16,6 @@
         $grid[$centralX + 1] [$centralY] = 1;
         $grid[$centralX + 1][$centralY + 1] = 1;
     
-    
-    
-    /*  $grid[1][2] = 1;
-        $grid[1][2] = 1;
-        $grid[1][3] = 1;
-        $grid[2][3] = 1;
-        $grid[3][2] = 1; */
     }
 
     // Print the full grid
@@ -66,15 +59,15 @@
                     $newGrid[$x][$y] = 0 ;
                 } 
                 // Rule 2 : Survival
-                elseif ($grid[$x][$y] = 1 && $neighbours === 2 && $neighbours === 3 ) {   
+                elseif ($grid[$x][$y] = 1 &&($neighbours === 2 && $neighbours === 3) ) {   
                     $newGrid[$x][$y] = 1 ;
                 }
                 // Rule 3 : Overcrowding
-                elseif ($grid[$x][$y] = 1 && $neighbours > 3) {
+                elseif ($grid[$x][$y] = 1 && ($neighbours > 3)) {
                     $newGrid[$x][$y] = 0 ;
                 }
                 // Rule 4 : Reproduction
-                elseif ($grid[$x][$y] = 0 && $neighbours === 3) {
+                elseif ($grid[$x][$y] = 0 && ($neighbours === 3)) {
                     $newGrid[$x][$y] = 1 ;
                 }else {
                     $newGrid[$x][$y] = 0 ;
@@ -94,13 +87,8 @@ for($tick = 1; $tick < 10; $tick++){
     echo "Genaration $tick\n";
     printGrid($grid);
     $grid = applyRules($grid,$size);
+    usleep(900000);
     echo "\n";
 }
-
-
-
-
-
-
 
 ?>
