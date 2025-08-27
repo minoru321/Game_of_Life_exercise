@@ -41,8 +41,43 @@
         return $count;
     }
 
+    // Apply rules
+    function applyRules($grid,$size) {
+        $newGrid = array_fill(0,$size,array_fill(0,$size,0)); # Filling new grid $size * $size full matrix with 0 (All dead cells)
+        for($x = 0; $x < $size ; $x++){
+            for($y = 0; $y < $size ; $y++){
+                $neighbours = countLiveNeighbours($x,$y);
+                if($grid[$x][$y] === 1 ) { 
+                    if($neighbours === 2 || $neighbours === 3){
+                        $grid[$x][$y] === 1;
+                    }else{
+                        $grid[$x][$y] === 0;  
+                    }
+                }else {
+                    if($neighbours === 3){    #  Rule 4: Reproduction
+                        $grid[$x][$y] === 1;
+                }else {
+                     $grid[$x][$y] === 0;   
+                }
+            }
+        }
+        return $newGrid;
+    }
+}
+
+// Run the functions
+for($tick = 0; $tick < 10; $tick++){
+    echo "Genaration $tick\n";
+    printGrid($grid);
+    $grid = applyRules($grid,$size);
+    echo "\n";
+}
+
+
 
 #initializeGrid($grid);
-printGrid($grid);
-countLiveNeighbours(2,3);
+#countLiveNeighbours(2,3);
+
+
+
 ?>
