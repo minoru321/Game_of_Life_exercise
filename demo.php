@@ -1,5 +1,7 @@
 <?php 
 
+// demo.php >> To run the program
+
 require_once "ALGO/gameoflife.php";
 
     $size = 25; # To Diffine the size of the grid( 25x25 cell universe )

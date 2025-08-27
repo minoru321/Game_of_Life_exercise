@@ -1,5 +1,5 @@
 <?php
-    // Implementation of Conway's Game of life Using PHP (Console Running)
+    // gameoflife.php  >>> Implementation of Conway's Game of life Using PHP (Console Running)
 
     // Starting Glider pattern Display (Shoud be middle of the 25 * 25 metrix )
     function initializeGrid(&$grid){
