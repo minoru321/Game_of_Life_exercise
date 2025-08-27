@@ -29,15 +29,18 @@
     }
 
     // Count the Live Neighbours
-    function countLiveNeighbours($x,$y){
+    function countLiveNeighbours($x,$y,$size,$grid){
         $count = 0;  #for start all 0 live Neighbours(All dead)
         for ($i = -1;$i <= 1 ;$i++) {
             for ($j = -1; $j <= 1 ; $j++){
                 if($i == 0 && $j == 0 ) continue; # we are caring about Neighbours (So skip center cell > [2][2]) 
                 $newX =$x + $i ;
                 $newY =$y + $j ;
-            }           
-        }
+                    if($newX >= 0 && $newY >= 0 && $newX < $size && $newY < $size){ # To check cell is within the univers
+                            $count = $count + $grid[$newX][$newY]; 
+                    }
+                }          
+             }
         return $count;
     }
 
@@ -46,7 +49,7 @@
         $newGrid = array_fill(0,$size,array_fill(0,$size,0)); # Filling new grid $size * $size full matrix with 0 (All dead cells)
         for($x = 0; $x < $size ; $x++){
             for($y = 0; $y < $size ; $y++){
-                $neighbours = countLiveNeighbours($x,$y);
+                $neighbours = countLiveNeighbours($x,$y,$size,$grid);
                 if($grid[$x][$y] === 1 ) { 
                     if($neighbours === 2 || $neighbours === 3){
                         $grid[$x][$y] === 1;
